@@ -1,0 +1,79 @@
+[project]
+name = "mhwpype"
+version = "0.1.0"
+description = "A Python package for identifying marine heatwaves and other extreme events."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Ian Black", email = "ian.black@oregonstate.edu"},
+    {name = "Andrew Scherer", email = "scherand@oregonstate.edu"},
+    # add others as you see fit, whoever is on the manuscript probably makes sense here
+]
+dependencies = [
+    "numpy>=2.1.3",
+    "pandas>=2.2.3",
+    "pyyaml>=6.0.2",
+    "xarray[accel,io,parallel]>=2025.1.2",
+]
+keywords = ["oceanography", "heatwaves", "climate"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+homepage = "https://github.com/IanTBlack/mhwpype"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.3.5",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "F",    # Pyflakes
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "PIE",  # flake8-pie
+    "TID",  # flake8-tidy-imports (absolute imports)
+    "PGH",  # pygrep-hooks
+    "PERF", # Perflint
+    "RUF",
+]
+ignore = [
+    #### modules
+    "C90", # mccabe complexity
+    "DJ",  # django
+
+    #### specific rules
+    "D401",   # non-imperative-mood
+    "D404",   # docstring-starts-with-this
+    "DTZ001", # call-datetime-without-tzinfo
+    "DTZ007", # call-datetime-strptime-without-zone
+    "E501",   # line-too-long
+    "FBT001", # boolean-type-hint-positional-argument
+    "FBT002", # boolean-default-value-positional-argument
+    "FBT003", # boolean-positional-value-in-call
+    "PD011",  # pandas-use-of-dot-values
+    "PLR0913",# too-many-arguments
+    "PLR2004",# magic-value-comparison
+    "TRY003", # external messages in exceptions are too verbose
+    "TD002",  # missing-todo-author
+    "TD003",  # missing-todo-link
+    "FIX002", # line-contains-todo
+]
