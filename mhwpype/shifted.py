@@ -14,7 +14,8 @@ class ShiftedBaseline:
     def build_daily_climatology(
         self,
         temperature_data: xr.DataArray,
-        target_years: list[int],
+        start_year: int = 2015,
+        end_year: int = 2024,
         reference_period_length: int = 30,
         half_window_width: int = 5,
         use_circular: bool = True,
@@ -30,7 +31,7 @@ class ShiftedBaseline:
         :return: The climatology with the primary dimension of 'time'.
         """
         shiftclims = []
-        for target_year in target_years:
+        for target_year in range(start_year, end_year + 1):
             ref_data = temperature_data.sel(
                 time=slice(
                     datetime(target_year - reference_period_length, 1, 1), datetime(target_year - 1, 12, 31, 23, 59, 59)
