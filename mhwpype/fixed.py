@@ -2,12 +2,14 @@ from datetime import datetime
 
 from mhwpype.core import ReferencePeriod
 
+
 class HOBDAY16:
     """Default recommendations for MHW analysis from Hobday et al. (2016)"""
+
     HALF_WINDOW_WIDTH = 5
     MINIMUM_EVENT_LENGTH = 5
     MAXIMUM_GAP_LENGTH = 2
-    THRESHOLD = [0.90]
+    THRESHOLD = [0.90]  # noqa: RUF012
 
 
 class FixedBaseline(ReferencePeriod):
@@ -24,5 +26,5 @@ class FixedBaseline(ReferencePeriod):
         build_daily_climatology
         build_daily_threshold
         """
-        self.methodology = 'FixedBaseline'
+        self.methodology = "FixedBaseline"
         super().__init__(reference_begin_datetime, reference_end_datetime)
